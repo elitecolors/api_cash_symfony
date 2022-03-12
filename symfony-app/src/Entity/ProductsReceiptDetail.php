@@ -90,5 +90,4 @@ class ProductsReceiptDetail
 
         return $this;
     }
-
 }

@@ -25,11 +25,11 @@ class CashApiController extends AbstractController
         string $barcode,
         ProductHandler $productHandler,
         SerializerInterface $serializer
-    ): Response
-    {
+    ): Response {
         $product = $productHandler->getProduct($barcode);
 
-        $data = $serializer->serialize($product, JsonEncoder::FORMAT,[AbstractNormalizer::IGNORED_ATTRIBUTES => ['receipt']]);
+        $data = $serializer->serialize($product, JsonEncoder::FORMAT, [AbstractNormalizer::IGNORED_ATTRIBUTES => ['receipt']]);
+
         return new JsonResponse($data, Response::HTTP_OK, [], true);
     }
 
@@ -38,18 +38,16 @@ class CashApiController extends AbstractController
      */
     public function createReceipt(
         ReceiptHandler $receiptHandler
-    ): Response
-    {
+    ): Response {
         try {
             $receiptHandler->createReceipt();
+
             return $this->json([
-                'success' => 'receipt created! '
+                'success' => 'receipt created! ',
             ]);
-        }
-        catch (\Exception $exception)
-        {
+        } catch (\Exception $exception) {
             return $this->json([
-                'error' => $exception->getMessage()
+                'error' => $exception->getMessage(),
             ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
@@ -63,26 +61,23 @@ class CashApiController extends AbstractController
         string $receipt_code,
         string $barcode,
         ReceiptHandler $receiptHandler
-    ): Response
-    {
+    ): Response {
         try {
-            $addProduct = $receiptHandler->addProductReceipt($receipt_code,$barcode);
-            if(!$addProduct)
-            {
+            $addProduct = $receiptHandler->addProductReceipt($receipt_code, $barcode);
+            if (!$addProduct) {
                 return $this->json([
-                    'error' => 'error adding product check code receipt or barcode '
+                    'error' => 'error adding product check code receipt or barcode ',
                 ],
                     Response::HTTP_BAD_REQUEST
                 );
             }
+
             return $this->json([
-                'success' => 'product added to receipt! '
+                'success' => 'product added to receipt! ',
             ]);
-        }
-        catch (\Exception $exception)
-        {
+        } catch (\Exception $exception) {
             return $this->json([
-                'error' => $exception->getMessage()
+                'error' => $exception->getMessage(),
             ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
@@ -95,27 +90,24 @@ class CashApiController extends AbstractController
     public function changeAmount(
         int $new_amount,
         ReceiptHandler $receiptHandler
-    ): Response
-    {
+    ): Response {
         try {
             $update = $receiptHandler->updateProduct($new_amount);
 
-            if(!$update)
-            {
+            if (!$update) {
                 return $this->json([
-                    'error' => 'error updating quantity '
+                    'error' => 'error updating quantity ',
                 ],
                     Response::HTTP_BAD_REQUEST
                 );
             }
+
             return $this->json([
-                'success' => 'quantity updated '
+                'success' => 'quantity updated ',
             ]);
-        }
-        catch (\Exception $exception)
-        {
+        } catch (\Exception $exception) {
             return $this->json([
-                'error' => $exception->getMessage()
+                'error' => $exception->getMessage(),
             ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
@@ -127,27 +119,24 @@ class CashApiController extends AbstractController
      */
     public function finishReceipt(
         ReceiptHandler $receiptHandler
-    ): Response
-    {
+    ): Response {
         try {
             $update = $receiptHandler->finishReceipt();
 
-            if(!$update)
-            {
+            if (!$update) {
                 return $this->json([
-                    'error' => 'error no receipt found '
+                    'error' => 'error no receipt found ',
                 ],
                     Response::HTTP_BAD_REQUEST
                 );
             }
+
             return $this->json([
-                'success' => 'receipt status finished '
+                'success' => 'receipt status finished ',
             ]);
-        }
-        catch (\Exception $exception)
-        {
+        } catch (\Exception $exception) {
             return $this->json([
-                'error' => $exception->getMessage()
+                'error' => $exception->getMessage(),
             ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
@@ -162,12 +151,12 @@ class CashApiController extends AbstractController
         Request $request,
         ReceiptHandler $receiptHandler,
         SerializerInterface $serializer
-    ): Response
-    {
+    ): Response {
         $receiptCode = $request->get('code');
         $dataReceipt = $receiptHandler->getDataReceipt($receiptCode);
 
         $data = $serializer->serialize($dataReceipt, JsonEncoder::FORMAT);
+
         return new JsonResponse($data, Response::HTTP_OK, [], true);
     }
 }

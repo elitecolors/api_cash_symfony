@@ -8,18 +8,17 @@ use Doctrine\ORM\EntityManagerInterface;
 class ProductHandler
 {
     private EntityManagerInterface $entityManager;
+
     public function __construct(
         EntityManagerInterface $entityManager
-    )
-    {
+    ) {
         $this->entityManager = $entityManager;
     }
 
-    public function addProduct(array $array):bool
+    public function addProduct(array $array): bool
     {
         // firstly we check if product exist
-        if($this->getProduct($array['barcode']))
-        {
+        if ($this->getProduct($array['barcode'])) {
             return false;
         }
 
@@ -31,14 +30,15 @@ class ProductHandler
 
         $this->entityManager->persist($product);
         $this->entityManager->flush();
+
         return true;
     }
 
-    public function getProduct(string $barcode):?Product
+    public function getProduct(string $barcode): ?Product
     {
-        $productRepository =  $this->entityManager->getRepository(Product::class);
+        $productRepository = $this->entityManager->getRepository(Product::class);
 
-        $product = $productRepository->findOneBy(["barcode" => $barcode]);
+        $product = $productRepository->findOneBy(['barcode' => $barcode]);
 
         return $product ?? null;
     }
@@ -50,5 +50,4 @@ class ProductHandler
 
         return $list ?? [];
     }
-
 }

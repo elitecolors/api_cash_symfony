@@ -14,7 +14,7 @@ use Symfony\Component\Uid\Uuid;
  */
 class Receipt
 {
-    const STATUS_RECEIPT = ['IN_PROGRESS','DONE']; // by default receipt state in progress
+    public const STATUS_RECEIPT = ['IN_PROGRESS', 'DONE']; // by default receipt state in progress
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -42,10 +42,8 @@ class Receipt
      */
     private $productsReceiptDetails;
 
-
     public function __construct()
     {
-
         $this->productsReceiptDetails = new ArrayCollection();
     }
 
@@ -78,7 +76,6 @@ class Receipt
         return $this;
     }
 
-
     public function getCode(): ?string
     {
         return $this->code;
@@ -86,10 +83,9 @@ class Receipt
 
     public function setCode(?string $code): self
     {
-        if(!$code)
-        {
+        if (!$code) {
             $uuid = Uuid::v4();
-            $code =  $uuid->toBase32();
+            $code = $uuid->toBase32();
         }
         $this->code = $code;
 
