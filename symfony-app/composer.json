@@ -29,6 +29,9 @@
         "symfony/yaml": "6.0.*"
     },
     "require-dev": {
+        "codeception/module-asserts": "dev-master",
+        "codeception/module-phpbrowser": "dev-master",
+        "codeception/module-rest": "dev-master",
         "codeception/module-symfony": "dev-main",
         "symfony/maker-bundle": "^1.38"
     },

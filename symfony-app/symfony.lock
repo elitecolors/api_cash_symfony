@@ -38,6 +38,18 @@
     "codeception/lib-web": {
         "version": "1.0.0"
     },
+    "codeception/lib-xml": {
+        "version": "1.0.0"
+    },
+    "codeception/module-asserts": {
+        "version": "dev-master"
+    },
+    "codeception/module-phpbrowser": {
+        "version": "dev-master"
+    },
+    "codeception/module-rest": {
+        "version": "dev-master"
+    },
     "codeception/module-symfony": {
         "version": "dev-main"
     },
@@ -146,8 +158,17 @@
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.7"
     },
+    "guzzlehttp/guzzle": {
+        "version": "7.4-dev"
+    },
+    "guzzlehttp/promises": {
+        "version": "1.5-dev"
+    },
     "guzzlehttp/psr7": {
         "version": "2.2-dev"
+    },
+    "justinrainbow/json-schema": {
+        "version": "5.2.11"
     },
     "laminas/laminas-code": {
         "version": "4.5.1"
@@ -229,6 +250,9 @@
     "psr/event-dispatcher": {
         "version": "1.0.0"
     },
+    "psr/http-client": {
+        "version": "1.0.x-dev"
+    },
     "psr/http-factory": {
         "version": "1.0.x-dev"
     },
@@ -285,6 +309,9 @@
     },
     "sebastian/version": {
         "version": "4.0-dev"
+    },
+    "softcreatr/jsonpath": {
+        "version": "0.8.0"
     },
     "symfony/browser-kit": {
         "version": "6.0.x-dev"
