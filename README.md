@@ -16,15 +16,20 @@
 
 3. composer install
 
-4. jwt configuration 
-	mkdir config/jwt
-	chmod -R 777 config/jwt
-	
+4. jwt configuration :
+
+   mkdir config/jwt
+
+   chmod -R 777 config/jwt
+5. create database
+
+    bin/console doctrine:schema:update --force
+
 Generate the SSL keys:
 
 	php bin/console lexik:jwt:generate-keypair	
 
-##  check postman json file for api 
+##  check postman json file for api
 
 ### Managing your Symfony application:
 **Available tools:**
@@ -38,9 +43,8 @@ Generate the SSL keys:
 ## codeception
 
 to run api test :
- * go inside container 
+* go inside container
   docker-compose exec phpserver bash
 
 
- * php vendor/bin/codecept run api -d
-
+* php vendor/bin/codecept run api -d
