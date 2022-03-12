@@ -258,6 +258,7 @@ class ReceiptHandler
 
         if ($rowProductReceipt) {
             $this->entityManager->remove($rowProductReceipt);
+            $this->entityManager->flush();
 
             return true;
         }
