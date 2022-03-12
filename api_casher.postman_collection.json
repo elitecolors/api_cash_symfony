@@ -30,7 +30,7 @@
 					"formdata": [
 						{
 							"key": "email",
-							"value": "admin@mail.com",
+							"value": "admin_compte@mail.com",
 							"description": "",
 							"type": "text"
 						},
@@ -42,7 +42,7 @@
 						},
 						{
 							"key": "role",
-							"value": "IS_ADMIN",
+							"value": "ROLE_ADMIN",
 							"description": "",
 							"type": "text"
 						}
@@ -53,7 +53,52 @@
 			"response": []
 		},
 		{
-			"name": "get token ",
+			"name": "create user cash register",
+			"request": {
+				"url": "http://localhost:8080/auth/register",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NDY4Mzg3MTMsImV4cCI6MTk2MjE5ODcxMywicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoidGVzdDFAbWFpbC5mciJ9.K_kAqHtRj3AysfPwjr-iEhvt-nXxvdWfgHaDkNo8krfZM8rgYsRJtMK3CrBWt-pL7IxIUf-AdP9o-irTD3vGPfY-mSDiNznzyDw5j6yv-0CQa7ADdD3bzQNDT9Ol1JKlAcpgoyyMgAdcjbpHqjJ5MEasDAAu8AbK_Pi-iVkZsfdyvZdcsT46ZkIiUCPSguqdG15-en_weCearHl-s4qK3t4sahUMXdlr6Z8oLWlHTnRIqqvxTeR4GnAMgWSMRIjRcFo-lOAm1OrdR2uKp8LOwS4_7JQ0hoDy21K0706uuZlHPXGgQmqHRE71IA_is5I6JRRVDOuuHb4D9ArsSpYpLWgtYqTIr_6TxW_Z-s2gHWoQeDamyS1q0_ba53uri0VUrG6UudL30yt_PmDlKfUMCp1-Y4WYz9uRVYEuUdF-ItTGFzJriy9vmIwIeng0mS2Pj-sc6HS-oIbGXwFCLU3b0UMvUx017w7cZI76cb6OvHMLANBr_X5Jxtvia7qi5RjE7OzTXLQ8LhZSPv9oAza08-A3lQzbb51YWV6RGix8uecuCBIz87JSj0A3UQZPQJWs1Nf8XEklIE7yw-wa73mTn_Adh_Lw-C0iJVMkk6XRJ4oXyf_m32z7dF23cvYQBS3tDrhJzos-eeVLTP8C3uVoRvgHFZXfPWnWGG30bCpmTGY",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "cash_compte@mail.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "ROLE_USER",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "create a new user cash register "
+			},
+			"response": []
+		},
+		{
+			"name": "get token  ADMIN",
 			"request": {
 				"url": "http://localhost:8080/api/login_check",
 				"method": "POST",
@@ -66,9 +111,29 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"username\":\"admin@mail.com\",\"password\":\"test\"}"
+					"raw": "{\"username\":\"admin_compte@mail.com\",\"password\":\"test\"}"
 				},
 				"description": "get jwt token for a user"
+			},
+			"response": []
+		},
+		{
+			"name": "get token  CASH REGISTER",
+			"request": {
+				"url": "http://localhost:8080/api/login_check",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"cash_compte@mail.com\",\"password\":\"test\"}"
+				},
+				"description": "get jwt token for a CASH REGISTER user"
 			},
 			"response": []
 		},
@@ -113,7 +178,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"product\": \n\t{\n\t\t\"barcode\": \"fefefe\",\n\t\t\"name\": \"fefefe\",\n\t\t\"cost\": 12.2,\n\t\t\"vat\": 6\n\t}\n}"
+					"raw": "{\n\t\"product\": \n\t{\n\t\t\"barcode\": \"12457854\",\n\t\t\"name\": \"PRODUCT A\",\n\t\t\"cost\": 12.2,\n\t\t\"vat\": 6\n\t}\n}"
 				},
 				"description": "add product"
 			},
