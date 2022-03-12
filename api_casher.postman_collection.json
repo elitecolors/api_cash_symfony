@@ -1,0 +1,373 @@
+{
+	"variables": [],
+	"info": {
+		"name": "api_casher",
+		"_postman_id": "92f05006-4bfa-84f1-135a-e7dad5e1c994",
+		"description": "Api test symfony 6 ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create user",
+			"request": {
+				"url": "http://localhost:8080/auth/register",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NDY4Mzg3MTMsImV4cCI6MTk2MjE5ODcxMywicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoidGVzdDFAbWFpbC5mciJ9.K_kAqHtRj3AysfPwjr-iEhvt-nXxvdWfgHaDkNo8krfZM8rgYsRJtMK3CrBWt-pL7IxIUf-AdP9o-irTD3vGPfY-mSDiNznzyDw5j6yv-0CQa7ADdD3bzQNDT9Ol1JKlAcpgoyyMgAdcjbpHqjJ5MEasDAAu8AbK_Pi-iVkZsfdyvZdcsT46ZkIiUCPSguqdG15-en_weCearHl-s4qK3t4sahUMXdlr6Z8oLWlHTnRIqqvxTeR4GnAMgWSMRIjRcFo-lOAm1OrdR2uKp8LOwS4_7JQ0hoDy21K0706uuZlHPXGgQmqHRE71IA_is5I6JRRVDOuuHb4D9ArsSpYpLWgtYqTIr_6TxW_Z-s2gHWoQeDamyS1q0_ba53uri0VUrG6UudL30yt_PmDlKfUMCp1-Y4WYz9uRVYEuUdF-ItTGFzJriy9vmIwIeng0mS2Pj-sc6HS-oIbGXwFCLU3b0UMvUx017w7cZI76cb6OvHMLANBr_X5Jxtvia7qi5RjE7OzTXLQ8LhZSPv9oAza08-A3lQzbb51YWV6RGix8uecuCBIz87JSj0A3UQZPQJWs1Nf8XEklIE7yw-wa73mTn_Adh_Lw-C0iJVMkk6XRJ4oXyf_m32z7dF23cvYQBS3tDrhJzos-eeVLTP8C3uVoRvgHFZXfPWnWGG30bCpmTGY",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "admin@mail.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "IS_ADMIN",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get token ",
+			"request": {
+				"url": "http://localhost:8080/api/login_check",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"admin@mail.com\",\"password\":\"test\"}"
+				},
+				"description": "get jwt token for a user"
+			},
+			"response": []
+		},
+		{
+			"name": "login and call api",
+			"request": {
+				"url": "http://localhost:8080/api/admin/addProduct",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NDcwMDE4MDAsImV4cCI6MTY4MzAwMTgwMCwicm9sZXMiOlsiQURNSU4iLCJST0xFX1VTRVIiXSwiZW1haWwiOiJ0ZXNkenN0QG1haWwuY29tIn0.loZE5GzrNy6XRiHiockVDbqM-QSPh2S0EDKzD-Exk7ZV6F4Zr5g0fTisvEGmpz5jyV3PWxtxS9e5N_JLE5_JFFs4CCCHTOJeQj3oPxQM_mXL_DqcByANccJpgbPuC6o2Oul_eORcd6r-hmFU60_tIbEuzUQD6Ol3vx_m-4gc8EUnuoKdK1zVbcZEA81ePmZlx6vrQV1Zpe4ygFOjEwxHtnf6Pj8seDjmD1PxP30_cUqUbgUUMAd-86IUnErXoqvkiMBQYDDHDQdqG8yzvLgQNp27TxynptDmTZaHr36g6oTMgHDEQHDTD--_yDle9wbVpHbwki3MEmxDkIuF4Jjv_Q",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Login with barear jwt token\ncall api"
+			},
+			"response": []
+		},
+		{
+			"name": "add product admin",
+			"request": {
+				"url": "http://localhost:8080/api/admin/addProduct",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NDcwMDE4MDAsImV4cCI6MTY4MzAwMTgwMCwicm9sZXMiOlsiQURNSU4iLCJST0xFX1VTRVIiXSwiZW1haWwiOiJ0ZXNkenN0QG1haWwuY29tIn0.loZE5GzrNy6XRiHiockVDbqM-QSPh2S0EDKzD-Exk7ZV6F4Zr5g0fTisvEGmpz5jyV3PWxtxS9e5N_JLE5_JFFs4CCCHTOJeQj3oPxQM_mXL_DqcByANccJpgbPuC6o2Oul_eORcd6r-hmFU60_tIbEuzUQD6Ol3vx_m-4gc8EUnuoKdK1zVbcZEA81ePmZlx6vrQV1Zpe4ygFOjEwxHtnf6Pj8seDjmD1PxP30_cUqUbgUUMAd-86IUnErXoqvkiMBQYDDHDQdqG8yzvLgQNp27TxynptDmTZaHr36g6oTMgHDEQHDTD--_yDle9wbVpHbwki3MEmxDkIuF4Jjv_Q",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"product\": \n\t{\n\t\t\"barcode\": \"fefefe\",\n\t\t\"name\": \"fefefe\",\n\t\t\"cost\": 12.2,\n\t\t\"vat\": 6\n\t}\n}"
+				},
+				"description": "add product"
+			},
+			"response": []
+		},
+		{
+			"name": "product list admin",
+			"request": {
+				"url": "http://localhost:8080/api/admin/listProduct",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NDcwMDE4MDAsImV4cCI6MTY4MzAwMTgwMCwicm9sZXMiOlsiQURNSU4iLCJST0xFX1VTRVIiXSwiZW1haWwiOiJ0ZXNkenN0QG1haWwuY29tIn0.loZE5GzrNy6XRiHiockVDbqM-QSPh2S0EDKzD-Exk7ZV6F4Zr5g0fTisvEGmpz5jyV3PWxtxS9e5N_JLE5_JFFs4CCCHTOJeQj3oPxQM_mXL_DqcByANccJpgbPuC6o2Oul_eORcd6r-hmFU60_tIbEuzUQD6Ol3vx_m-4gc8EUnuoKdK1zVbcZEA81ePmZlx6vrQV1Zpe4ygFOjEwxHtnf6Pj8seDjmD1PxP30_cUqUbgUUMAd-86IUnErXoqvkiMBQYDDHDQdqG8yzvLgQNp27TxynptDmTZaHr36g6oTMgHDEQHDTD--_yDle9wbVpHbwki3MEmxDkIuF4Jjv_Q",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"product\": \n\t{\n\t\t\"barcode\": \"fefefe\",\n\t\t\"name\": \"fefefe\",\n\t\t\"cost\": 12.2,\n\t\t\"vat\": 6\n\t}\n}"
+				},
+				"description": "show all product admin"
+			},
+			"response": []
+		},
+		{
+			"name": "cash register get product",
+			"request": {
+				"url": "http://localhost:8080/api/cash/getProduct/fefefe",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NDcwMDE4MDAsImV4cCI6MTY4MzAwMTgwMCwicm9sZXMiOlsiQURNSU4iLCJST0xFX1VTRVIiXSwiZW1haWwiOiJ0ZXNkenN0QG1haWwuY29tIn0.loZE5GzrNy6XRiHiockVDbqM-QSPh2S0EDKzD-Exk7ZV6F4Zr5g0fTisvEGmpz5jyV3PWxtxS9e5N_JLE5_JFFs4CCCHTOJeQj3oPxQM_mXL_DqcByANccJpgbPuC6o2Oul_eORcd6r-hmFU60_tIbEuzUQD6Ol3vx_m-4gc8EUnuoKdK1zVbcZEA81ePmZlx6vrQV1Zpe4ygFOjEwxHtnf6Pj8seDjmD1PxP30_cUqUbgUUMAd-86IUnErXoqvkiMBQYDDHDQdqG8yzvLgQNp27TxynptDmTZaHr36g6oTMgHDEQHDTD--_yDle9wbVpHbwki3MEmxDkIuF4Jjv_Q",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"product\": \n\t{\n\t\t\"barcode\": \"fefefe\",\n\t\t\"name\": \"fefefe\",\n\t\t\"cost\": 12.2,\n\t\t\"vat\": 6\n\t}\n}"
+				},
+				"description": "Cash register: Get a product by barcode"
+			},
+			"response": []
+		},
+		{
+			"name": "cash register create receipt",
+			"request": {
+				"url": "http://localhost:8080/api/cash/getProduct/fefefe",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NDcwMDE4MDAsImV4cCI6MTY4MzAwMTgwMCwicm9sZXMiOlsiQURNSU4iLCJST0xFX1VTRVIiXSwiZW1haWwiOiJ0ZXNkenN0QG1haWwuY29tIn0.loZE5GzrNy6XRiHiockVDbqM-QSPh2S0EDKzD-Exk7ZV6F4Zr5g0fTisvEGmpz5jyV3PWxtxS9e5N_JLE5_JFFs4CCCHTOJeQj3oPxQM_mXL_DqcByANccJpgbPuC6o2Oul_eORcd6r-hmFU60_tIbEuzUQD6Ol3vx_m-4gc8EUnuoKdK1zVbcZEA81ePmZlx6vrQV1Zpe4ygFOjEwxHtnf6Pj8seDjmD1PxP30_cUqUbgUUMAd-86IUnErXoqvkiMBQYDDHDQdqG8yzvLgQNp27TxynptDmTZaHr36g6oTMgHDEQHDTD--_yDle9wbVpHbwki3MEmxDkIuF4Jjv_Q",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"product\": \n\t{\n\t\t\"barcode\": \"fefefe\",\n\t\t\"name\": \"fefefe\",\n\t\t\"cost\": 12.2,\n\t\t\"vat\": 6\n\t}\n}"
+				},
+				"description": "Cash register: create a new receipt"
+			},
+			"response": []
+		},
+		{
+			"name": "cash register add product receipt",
+			"request": {
+				"url": "http://localhost:8080/api/cash/addProductRceipt/6G0G3FY2AH8SVVTVFWD9P8A8KW/12154",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NDcwMDE4MDAsImV4cCI6MTY4MzAwMTgwMCwicm9sZXMiOlsiQURNSU4iLCJST0xFX1VTRVIiXSwiZW1haWwiOiJ0ZXNkenN0QG1haWwuY29tIn0.loZE5GzrNy6XRiHiockVDbqM-QSPh2S0EDKzD-Exk7ZV6F4Zr5g0fTisvEGmpz5jyV3PWxtxS9e5N_JLE5_JFFs4CCCHTOJeQj3oPxQM_mXL_DqcByANccJpgbPuC6o2Oul_eORcd6r-hmFU60_tIbEuzUQD6Ol3vx_m-4gc8EUnuoKdK1zVbcZEA81ePmZlx6vrQV1Zpe4ygFOjEwxHtnf6Pj8seDjmD1PxP30_cUqUbgUUMAd-86IUnErXoqvkiMBQYDDHDQdqG8yzvLgQNp27TxynptDmTZaHr36g6oTMgHDEQHDTD--_yDle9wbVpHbwki3MEmxDkIuF4Jjv_Q",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"product\": \n\t{\n\t\t\"barcode\": \"fefefe\",\n\t\t\"name\": \"fefefe\",\n\t\t\"cost\": 12.2,\n\t\t\"vat\": 6\n\t}\n}"
+				},
+				"description": "Cash register: Add a product by barcode to the receipt"
+			},
+			"response": []
+		},
+		{
+			"name": "cash register update amount receipt",
+			"request": {
+				"url": "http://localhost:8080/api/cash/changeAmount/4",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NDcwMDE4MDAsImV4cCI6MTY4MzAwMTgwMCwicm9sZXMiOlsiQURNSU4iLCJST0xFX1VTRVIiXSwiZW1haWwiOiJ0ZXNkenN0QG1haWwuY29tIn0.loZE5GzrNy6XRiHiockVDbqM-QSPh2S0EDKzD-Exk7ZV6F4Zr5g0fTisvEGmpz5jyV3PWxtxS9e5N_JLE5_JFFs4CCCHTOJeQj3oPxQM_mXL_DqcByANccJpgbPuC6o2Oul_eORcd6r-hmFU60_tIbEuzUQD6Ol3vx_m-4gc8EUnuoKdK1zVbcZEA81ePmZlx6vrQV1Zpe4ygFOjEwxHtnf6Pj8seDjmD1PxP30_cUqUbgUUMAd-86IUnErXoqvkiMBQYDDHDQdqG8yzvLgQNp27TxynptDmTZaHr36g6oTMgHDEQHDTD--_yDle9wbVpHbwki3MEmxDkIuF4Jjv_Q",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"product\": \n\t{\n\t\t\"barcode\": \"fefefe\",\n\t\t\"name\": \"fefefe\",\n\t\t\"cost\": 12.2,\n\t\t\"vat\": 6\n\t}\n}"
+				},
+				"description": "Cash register: get last product for receipt update quantity"
+			},
+			"response": []
+		},
+		{
+			"name": "cash register finish receipt",
+			"request": {
+				"url": "http://localhost:8080/api/cash/finishReceipt",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NDcwMDE4MDAsImV4cCI6MTY4MzAwMTgwMCwicm9sZXMiOlsiQURNSU4iLCJST0xFX1VTRVIiXSwiZW1haWwiOiJ0ZXNkenN0QG1haWwuY29tIn0.loZE5GzrNy6XRiHiockVDbqM-QSPh2S0EDKzD-Exk7ZV6F4Zr5g0fTisvEGmpz5jyV3PWxtxS9e5N_JLE5_JFFs4CCCHTOJeQj3oPxQM_mXL_DqcByANccJpgbPuC6o2Oul_eORcd6r-hmFU60_tIbEuzUQD6Ol3vx_m-4gc8EUnuoKdK1zVbcZEA81ePmZlx6vrQV1Zpe4ygFOjEwxHtnf6Pj8seDjmD1PxP30_cUqUbgUUMAd-86IUnErXoqvkiMBQYDDHDQdqG8yzvLgQNp27TxynptDmTZaHr36g6oTMgHDEQHDTD--_yDle9wbVpHbwki3MEmxDkIuF4Jjv_Q",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"product\": \n\t{\n\t\t\"barcode\": \"fefefe\",\n\t\t\"name\": \"fefefe\",\n\t\t\"cost\": 12.2,\n\t\t\"vat\": 6\n\t}\n}"
+				},
+				"description": "Cash register:finish receipt"
+			},
+			"response": []
+		},
+		{
+			"name": "cash register get receipt details",
+			"request": {
+				"url": "http://localhost:8080/api/cash/getReceipt",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NDcwMDE4MDAsImV4cCI6MTY4MzAwMTgwMCwicm9sZXMiOlsiQURNSU4iLCJST0xFX1VTRVIiXSwiZW1haWwiOiJ0ZXNkenN0QG1haWwuY29tIn0.loZE5GzrNy6XRiHiockVDbqM-QSPh2S0EDKzD-Exk7ZV6F4Zr5g0fTisvEGmpz5jyV3PWxtxS9e5N_JLE5_JFFs4CCCHTOJeQj3oPxQM_mXL_DqcByANccJpgbPuC6o2Oul_eORcd6r-hmFU60_tIbEuzUQD6Ol3vx_m-4gc8EUnuoKdK1zVbcZEA81ePmZlx6vrQV1Zpe4ygFOjEwxHtnf6Pj8seDjmD1PxP30_cUqUbgUUMAd-86IUnErXoqvkiMBQYDDHDQdqG8yzvLgQNp27TxynptDmTZaHr36g6oTMgHDEQHDTD--_yDle9wbVpHbwki3MEmxDkIuF4Jjv_Q",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"product\": \n\t{\n\t\t\"barcode\": \"fefefe\",\n\t\t\"name\": \"fefefe\",\n\t\t\"cost\": 12.2,\n\t\t\"vat\": 6\n\t}\n}"
+				},
+				"description": "Cash register: Get the receipt, including all product names grouped, amount of that product,\ncosts per row and total, and total vat per class"
+			},
+			"response": []
+		},
+		{
+			"name": "admin add discount",
+			"request": {
+				"url": "http://localhost:8080/api/admin/addDiscount/12154",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NDcwMDE4MDAsImV4cCI6MTY4MzAwMTgwMCwicm9sZXMiOlsiQURNSU4iLCJST0xFX1VTRVIiXSwiZW1haWwiOiJ0ZXNkenN0QG1haWwuY29tIn0.loZE5GzrNy6XRiHiockVDbqM-QSPh2S0EDKzD-Exk7ZV6F4Zr5g0fTisvEGmpz5jyV3PWxtxS9e5N_JLE5_JFFs4CCCHTOJeQj3oPxQM_mXL_DqcByANccJpgbPuC6o2Oul_eORcd6r-hmFU60_tIbEuzUQD6Ol3vx_m-4gc8EUnuoKdK1zVbcZEA81ePmZlx6vrQV1Zpe4ygFOjEwxHtnf6Pj8seDjmD1PxP30_cUqUbgUUMAd-86IUnErXoqvkiMBQYDDHDQdqG8yzvLgQNp27TxynptDmTZaHr36g6oTMgHDEQHDTD--_yDle9wbVpHbwki3MEmxDkIuF4Jjv_Q",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"product\": \n\t{\n\t\t\"barcode\": \"fefefe\",\n\t\t\"name\": \"fefefe\",\n\t\t\"cost\": 12.2,\n\t\t\"vat\": 6\n\t}\n}"
+				},
+				"description": "Admin: add discounts, e.g. for all new receipts, with 3 or more of product A, the 3 rd is for free,\nshow this discount on receipts"
+			},
+			"response": []
+		},
+		{
+			"name": "admin get total turnover per hour",
+			"request": {
+				"url": "http://localhost:8080/api/admin/totalturnover",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NDcwMDE4MDAsImV4cCI6MTY4MzAwMTgwMCwicm9sZXMiOlsiQURNSU4iLCJST0xFX1VTRVIiXSwiZW1haWwiOiJ0ZXNkenN0QG1haWwuY29tIn0.loZE5GzrNy6XRiHiockVDbqM-QSPh2S0EDKzD-Exk7ZV6F4Zr5g0fTisvEGmpz5jyV3PWxtxS9e5N_JLE5_JFFs4CCCHTOJeQj3oPxQM_mXL_DqcByANccJpgbPuC6o2Oul_eORcd6r-hmFU60_tIbEuzUQD6Ol3vx_m-4gc8EUnuoKdK1zVbcZEA81ePmZlx6vrQV1Zpe4ygFOjEwxHtnf6Pj8seDjmD1PxP30_cUqUbgUUMAd-86IUnErXoqvkiMBQYDDHDQdqG8yzvLgQNp27TxynptDmTZaHr36g6oTMgHDEQHDTD--_yDle9wbVpHbwki3MEmxDkIuF4Jjv_Q",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"product\": \n\t{\n\t\t\"barcode\": \"fefefe\",\n\t\t\"name\": \"fefefe\",\n\t\t\"cost\": 12.2,\n\t\t\"vat\": 6\n\t}\n}"
+				},
+				"description": "Admin: get total turnover per hour"
+			},
+			"response": []
+		},
+		{
+			"name": "admin remove row by barcode or code receipt",
+			"request": {
+				"url": "http://localhost:8080/api/admin/removeProduct/12457854",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NDcwMDE4MDAsImV4cCI6MTY4MzAwMTgwMCwicm9sZXMiOlsiQURNSU4iLCJST0xFX1VTRVIiXSwiZW1haWwiOiJ0ZXNkenN0QG1haWwuY29tIn0.loZE5GzrNy6XRiHiockVDbqM-QSPh2S0EDKzD-Exk7ZV6F4Zr5g0fTisvEGmpz5jyV3PWxtxS9e5N_JLE5_JFFs4CCCHTOJeQj3oPxQM_mXL_DqcByANccJpgbPuC6o2Oul_eORcd6r-hmFU60_tIbEuzUQD6Ol3vx_m-4gc8EUnuoKdK1zVbcZEA81ePmZlx6vrQV1Zpe4ygFOjEwxHtnf6Pj8seDjmD1PxP30_cUqUbgUUMAd-86IUnErXoqvkiMBQYDDHDQdqG8yzvLgQNp27TxynptDmTZaHr36g6oTMgHDEQHDTD--_yDle9wbVpHbwki3MEmxDkIuF4Jjv_Q",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"product\": \n\t{\n\t\t\"barcode\": \"fefefe\",\n\t\t\"name\": \"fefefe\",\n\t\t\"cost\": 12.2,\n\t\t\"vat\": 6\n\t}\n}"
+				},
+				"description": "Admin: remove row"
+			},
+			"response": []
+		}
+	]
+}
