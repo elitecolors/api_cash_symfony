@@ -146,7 +146,7 @@ class ApiController extends AbstractController
     ): JsonResponse
     {
         try {
-            $remove = $receiptHandler->removeProduct($barcode,$codeReceipt);
+            $remove = $receiptHandler->removeProdzduct($barcode,$codeReceipt);
 
             if(!$remove)
             {
