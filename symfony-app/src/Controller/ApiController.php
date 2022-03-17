@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\Entity\Product;
 use App\Helper\ProductHandler;
 use App\Helper\ReceiptHandler;
+use App\Validation\CreateProductRequestPayload;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -15,6 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
  * @Route("/api/admin", name="api")
@@ -34,7 +36,9 @@ class ApiController extends AbstractController
      */
     public function addProduct(
         Request $request,
-        ProductHandler $productHandler
+        ProductHandler $productHandler,
+        ValidatorInterface $validator,
+        SerializerInterface $serializer
     ): JsonResponse {
         try {
             $data = json_decode(
@@ -49,7 +53,22 @@ class ApiController extends AbstractController
                     Response::HTTP_BAD_REQUEST
                 );
             }
-            $addProduct = $productHandler->addProduct($data['product'] ?? []);
+
+            $requestPayload = $serializer->deserialize(
+                $request->getContent(),
+                CreateProductRequestPayload::class,
+                'json',
+            );
+
+            $errors = $validator->validate($requestPayload);
+
+            if ($errors->count() > 0) {
+                return new JsonResponse(
+                    'check request data',
+                    Response::HTTP_BAD_REQUEST
+                );
+            }
+            $addProduct = $productHandler->addProduct($data ?? []);
 
             if (!$addProduct) {
                 return $this->json([
